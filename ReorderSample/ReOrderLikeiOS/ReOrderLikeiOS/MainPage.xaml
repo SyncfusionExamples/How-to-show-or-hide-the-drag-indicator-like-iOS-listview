@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SfListViewSample"
+             x:Class="SfListViewSample.MainPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+
+    <ContentPage.Behaviors>
+        <local:Behavior/>
+    </ContentPage.Behaviors>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="editButton" Grid.Row="0" Text="Click to show drag indicator" Command="{Binding TapCommand}"/>
+            <syncfusion:SfListView x:Name="listView" AutoFitMode="Height"
+                             ItemSize="70" Grid.Row="1"
+                             ItemsSource="{Binding ContactsInfo}"
+                              DragStartMode="OnHold,OnDragIndicator"
+                             SelectionMode="None">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid x:Name="grid" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="1" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <syncfusion:DragIndicatorView IsVisible="{Binding IndicatorVisible}" ListView="{x:Reference listView}" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Grid Padding="10, 10, 10, 10">
+                                                <Image Source="DragIndicator.png" VerticalOptions="Center" HorizontalOptions="Center" />
+                                            </Grid>
+                                        </syncfusion:DragIndicatorView>
+
+                                        <Grid Grid.Column="1"
+                                              RowSpacing="1"
+                                              Padding="10,0,0,0"
+                                              VerticalOptions="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label LineBreakMode="NoWrap"
+                                                   TextColor="#474747"
+                                                   Text="{Binding ContactName}">
+                                                <Label.FontSize>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On  Platform="Android,iOS">
+                                                            <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="18" />
+                                                        </On>
+                                                        <On  Platform="UWP">
+                                                            <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="20" Desktop="20" />
+                                                        </On>
+                                                        <On  Platform="macOS" Value="18"/>
+                                                    </OnPlatform>
+                                                </Label.FontSize>
+                                            </Label>
+                                            <Label Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   TextColor="#474747"
+                                                   LineBreakMode="NoWrap"
+                                                   Text="{Binding ContactNumber}">
+                                                <Label.FontSize>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On  Platform="Android,iOS">
+                                                            <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14" />
+                                                        </On>
+                                                        <On  Platform="UWP">
+                                                            <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="12" Desktop="12" />
+                                                        </On>
+                                                        <On  Platform="macOS" Value="14"/>
+                                                    </OnPlatform>
+                                                </Label.FontSize>
+                                            </Label>
+                                        </Grid>
+                                        <Grid Grid.Row="0"
+                                              Grid.Column="2"
+                                              RowSpacing="0"
+                                              HorizontalOptions="End" VerticalOptions="Start">
+                                            <Grid.Padding>
+                                                <OnPlatform x:TypeArguments="Thickness">
+                                                    <On  Platform="iOS">
+                                                        <OnIdiom x:TypeArguments="Thickness" Phone="0,10,10,0" Tablet="0,10,10,0"  />
+                                                    </On>
+                                                    <On  Platform="Android,UWP">
+                                                        <OnIdiom x:TypeArguments="Thickness" Phone="0,10,10,0" Tablet="0,10,10,0" Desktop="0,10,10,0" />
+                                                    </On>
+                                                    <On  Platform="macOS" Value="0,10,15,0"/>
+                                                </OnPlatform>
+                                            </Grid.Padding>
+
+
+
+                                            <Label LineBreakMode="NoWrap"
+                                                   TextColor="#474747"
+                                                   Text="{Binding ContactType}">
+                                                <Label.FontSize>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On  Platform="Android,iOS">
+                                                            <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="12" />
+                                                        </On>
+                                                        <On  Platform="UWP">
+                                                            <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="11" Desktop="11" />
+                                                        </On>
+                                                        <On  Platform="macOS" Value="12"/>
+                                                    </OnPlatform>
+                                                </Label.FontSize>
+                                            </Label>
+                                        </Grid>
+                                    </Grid>
+                                    <StackLayout Grid.Row="1" BackgroundColor="Red" HeightRequest="1"/>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
