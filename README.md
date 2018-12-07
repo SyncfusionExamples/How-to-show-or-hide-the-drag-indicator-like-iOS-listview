@@ -1,7 +1,7 @@
 # How to show or hide the drag indicator like iOS listview?
 This example demonstrates how to show or hide the drag indicator like native iOS applications.
 
-See [How to show or hide the drag indicator like iOS listview?]() for more details.
+See [How to show or hide the drag indicator like iOS listview?](https://www.syncfusion.com/kb/9981/how-to-show-or-hide-the-drag-indicator-like-ios-listview) for more details.
 ## <a name="requirements-to-run-the-demo"></a>Requirements to run the demo ##
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) or [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/).
